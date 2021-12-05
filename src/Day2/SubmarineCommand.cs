@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Day2
+﻿namespace Day2
 {
     public enum SubmarineDirection
     {

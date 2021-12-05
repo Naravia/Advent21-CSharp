@@ -1,12 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Day3;
-
 async Task<IList<BinaryNumber>> LoadCommands(string input)
 {
     var lines = await File.ReadAllLinesAsync(input);
@@ -14,6 +8,7 @@ async Task<IList<BinaryNumber>> LoadCommands(string input)
         .Select(binaryNumber => new BinaryNumber(binaryNumber))
         .ToList();
 }
+
 
 const string file = "input.txt";
 if (!File.Exists(file))

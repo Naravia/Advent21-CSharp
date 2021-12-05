@@ -1,10 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Day4;
 
 async Task<(IList<int> calls, IList<BingoBoard> boards)> LoadBoards(string input)

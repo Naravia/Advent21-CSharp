@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Day2;
+﻿using Day2;
 
 async Task<IList<SubmarineCommand>> LoadCommands(string input)
 {

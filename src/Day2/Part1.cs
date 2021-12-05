@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Day2
+﻿namespace Day2
 {
     public class Part1
     {

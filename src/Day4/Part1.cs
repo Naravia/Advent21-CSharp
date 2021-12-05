@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Day4
+﻿namespace Day4
 {
-    public class Part2
+    public class Part1
     {
         private readonly IList<int> _calls;
         private readonly IList<BingoBoard> _boards;
 
-        public Part2(IList<int> calls, IList<BingoBoard> boards)
+        public Part1(IList<int> calls, IList<BingoBoard> boards)
         {
             _calls = calls;
             _boards = boards;
@@ -17,9 +13,8 @@ namespace Day4
 
         public void Solve()
         {
-            BingoBoard? lastBoardToWin = null;
+            BingoBoard? winningBoard = null;
             var lastCall = 0;
-            
             foreach (
                 var (call, board) in
                 from call in _calls
@@ -27,11 +22,8 @@ namespace Day4
                 select (call, board)
             )
             {
-                // Check if this board has already won.
-                if (board.HasWon)
-                {
-                    continue;
-                }
+                // Save the last call to use in our calculation at the end.
+                lastCall = call;
                 
                 // Call the number.
                 board.Call(call);
@@ -39,23 +31,22 @@ namespace Day4
                 // Check if we won
                 if (board.HasWon)
                 {
-                    lastCall = call;
-                    lastBoardToWin = board;
+                    Console.WriteLine("Winning Board:");
+                    Console.WriteLine(board);
+                    winningBoard = board;
+                    break;
                 }
             }
             
-            if (lastBoardToWin is null)
+            if (winningBoard is null)
             {
                 throw new InvalidOperationException("Nobody won.");
             }
-            
-            Console.WriteLine("Last board to win:");
-            Console.WriteLine(lastBoardToWin);
 
             // Sum all the unmarked numbers
             var unmarkedSum =
                 (
-                    from row in lastBoardToWin.Rows
+                    from row in winningBoard.Rows
                     where row.Marked == false
                     from number in row.Numbers
                     where number.Marked == false
