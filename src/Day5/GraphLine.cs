@@ -9,9 +9,10 @@ public class GraphLine
         Origin = origin;
         Destination = destination;
     }
+
     public GraphLine(string input)
     {
-        var mappingRegex = new Regex(@"^(\d+),(\d+) -> (\d+),(\d)");
+        var mappingRegex = new Regex(@"^(\d+),(\d+) -> (\d+),(\d+)");
         var matches = mappingRegex.Match(input);
         if (!matches.Success)
         {
@@ -36,18 +37,19 @@ public class GraphLine
     public bool IsHorizontal => Origin.Y == Destination.Y;
     public bool IsStraight => IsVertical || IsHorizontal;
 
-    public IList<GraphPoint> CalculatePoints()
+    public List<GraphPoint> CalculatePoints()
     {
         var points = new List<GraphPoint>();
 
-        GraphPoint traversal = Origin;
+        var traversal = Origin;
         var direction = (
             x: Origin.X < Destination.X ? 1 : -1,
             y: Origin.Y < Destination.Y ? 1 : -1
         );
 
         points.Add(traversal);
-        do
+
+        while (traversal.X != Destination.X || traversal.Y != Destination.Y)
         {
             if (traversal.X != Destination.X)
             {
@@ -59,7 +61,7 @@ public class GraphLine
                 traversal.Y += direction.y;
             }
             points.Add(traversal);
-        } while (traversal.X != Destination.X || traversal.Y != Destination.Y);
+        }
 
         return points;
     }

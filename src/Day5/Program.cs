@@ -23,4 +23,4 @@ Console.WriteLine("Solving Day 5 Part 1...");
 new Part1(mappings).Solve();
 
 Console.WriteLine("Solving Day 5 Part 2...");
-// new Part2(mappings).Solve();
+new Part2(mappings).Solve();

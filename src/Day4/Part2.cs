@@ -1,67 +1,66 @@
-﻿namespace Day4
+﻿namespace Day4;
+
+public class Part2
 {
-    public class Part2
+    private readonly IList<BingoBoard> _boards;
+    private readonly IList<int> _calls;
+
+    public Part2(IList<int> calls, IList<BingoBoard> boards)
     {
-        private readonly IList<int> _calls;
-        private readonly IList<BingoBoard> _boards;
+        _calls = calls;
+        _boards = boards;
+    }
 
-        public Part2(IList<int> calls, IList<BingoBoard> boards)
+    public void Solve()
+    {
+        BingoBoard? lastBoardToWin = null;
+        var lastCall = 0;
+
+        foreach (
+            var (call, board) in
+            from call in _calls
+            from board in _boards
+            select (call, board)
+        )
         {
-            _calls = calls;
-            _boards = boards;
+            // Check if this board has already won.
+            if (board.HasWon)
+            {
+                continue;
+            }
+
+            // Call the number.
+            board.Call(call);
+
+            // Check if we won
+            if (board.HasWon)
+            {
+                lastCall = call;
+                lastBoardToWin = board;
+            }
         }
 
-        public void Solve()
+        if (lastBoardToWin is null)
         {
-            BingoBoard? lastBoardToWin = null;
-            var lastCall = 0;
-            
-            foreach (
-                var (call, board) in
-                from call in _calls
-                from board in _boards
-                select (call, board)
+            throw new InvalidOperationException("Nobody won.");
+        }
+
+        Console.WriteLine("Last board to win:");
+        Console.WriteLine(lastBoardToWin);
+
+        // Sum all the unmarked numbers
+        var unmarkedSum =
+            (
+                from row in lastBoardToWin.Rows
+                where row.Marked == false
+                from number in row.Numbers
+                where number.Marked == false
+                select number.Number
             )
-            {
-                // Check if this board has already won.
-                if (board.HasWon)
-                {
-                    continue;
-                }
-                
-                // Call the number.
-                board.Call(call);
-                
-                // Check if we won
-                if (board.HasWon)
-                {
-                    lastCall = call;
-                    lastBoardToWin = board;
-                }
-            }
-            
-            if (lastBoardToWin is null)
-            {
-                throw new InvalidOperationException("Nobody won.");
-            }
-            
-            Console.WriteLine("Last board to win:");
-            Console.WriteLine(lastBoardToWin);
+            .Sum();
 
-            // Sum all the unmarked numbers
-            var unmarkedSum =
-                (
-                    from row in lastBoardToWin.Rows
-                    where row.Marked == false
-                    from number in row.Numbers
-                    where number.Marked == false
-                    select number.Number
-                )
-                .Sum();
+        var product = unmarkedSum * lastCall;
 
-            var product = unmarkedSum * lastCall;
-            
-            Console.WriteLine($"Unmarked Sum: {unmarkedSum}, Last Call: {lastCall}, Product: {product}");
-        }
+        Console.WriteLine($"Unmarked Sum: {unmarkedSum}, Last Call: {lastCall}, Product: {product}");
     }
 }

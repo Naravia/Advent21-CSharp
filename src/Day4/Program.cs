@@ -20,7 +20,7 @@ async Task<(IList<int> calls, IList<BingoBoard> boards)> LoadBoards(string input
         {
             continue;
         }
-        
+
         boards.Add(new BingoBoard(lines.Skip(idx).Take(5)));
         idx += 5;
     }

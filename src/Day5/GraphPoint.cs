@@ -17,7 +17,10 @@ public struct GraphPoint : IComparable<GraphPoint>
         return xComparison != 0 ? xComparison : Y.CompareTo(other.Y);
     }
 
-    public static implicit operator GraphPoint(ValueTuple<int, int> tuple) => new(tuple.Item1, tuple.Item2);
+    public static implicit operator GraphPoint(ValueTuple<int, int> tuple)
+    {
+        return new(tuple.Item1, tuple.Item2);
+    }
 
     public override string ToString()
     {

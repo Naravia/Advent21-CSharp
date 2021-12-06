@@ -12,14 +12,19 @@ public class Graph
     {
         foreach (var point in mapping.CalculatePoints())
         {
-            if (_graph.ContainsKey(point))
-            {
-                _graph[point]++;
-            }
-            else
-            {
-                _graph.Add(point, 1);
-            }
+            PlotPoint(point);
+        }
+    }
+
+    private void PlotPoint(GraphPoint point)
+    {
+        if (_graph.ContainsKey(point))
+        {
+            _graph[point]++;
+        }
+        else
+        {
+            _graph.Add(point, 1);
         }
     }
 
@@ -61,13 +66,6 @@ public class Graph
                 sb.Append((pointCount == 0 ? "." : pointCount.ToString()).PadLeft(lengths.x));
             }
             sb.AppendLine();
-        }
-
-        sb.Append(string.Empty.PadLeft(lengths.y + 1));
-
-        for (var x = 0; x <= max.x * lengths.x; ++x)
-        {
-            sb.Append('-');
         }
 
         return sb.ToString();

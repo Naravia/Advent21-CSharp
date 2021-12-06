@@ -11,6 +11,17 @@ public class Part2
 
     public void Solve()
     {
-        throw new NotImplementedException();
+        var graph = new Graph();
+
+        foreach (var mapping in _ventMappings)
+        {
+            graph.PlotLine(mapping);
+        }
+
+        var intersectingPoints = graph
+            .PlottedPoints
+            .Count(point => point.count >= 2);
+        
+        Console.WriteLine($"There are {intersectingPoints} intersecting points.");
     }
 }

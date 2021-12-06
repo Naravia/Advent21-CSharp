@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using Day3;
+
 async Task<IList<BinaryNumber>> LoadCommands(string input)
 {
     var lines = await File.ReadAllLinesAsync(input);

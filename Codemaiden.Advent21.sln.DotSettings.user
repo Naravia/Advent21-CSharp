@@ -1,4 +1,4 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a594e63d_002Dbd55_002D4b10_002Daf0f_002D7f001dedbc75/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Can_Plot_Lines" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c015e563_002D8bb3_002D41c8_002D8cfd_002D7884454e4a86/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Solution /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
