@@ -6,13 +6,13 @@ async Task<(IList<int> calls, IList<BingoBoard> boards)> LoadBoards(string input
 {
     var lines = await File.ReadAllLinesAsync(input);
 
-    var calls = lines
+    var bingoCalls = lines
         .First()
         .Split(',')
         .Select(int.Parse)
         .ToList();
 
-    var boards = new List<BingoBoard>();
+    var bingoBoards = new List<BingoBoard>();
     for (var idx = 1; idx < lines.Length; ++idx)
     {
         var line = lines[idx].Trim();
@@ -21,11 +21,11 @@ async Task<(IList<int> calls, IList<BingoBoard> boards)> LoadBoards(string input
             continue;
         }
 
-        boards.Add(new BingoBoard(lines.Skip(idx).Take(5)));
+        bingoBoards.Add(new BingoBoard(lines.Skip(idx).Take(5)));
         idx += 5;
     }
 
-    return (calls, boards);
+    return (bingoCalls, bingoBoards);
 }
 
 const string file = "input.txt";

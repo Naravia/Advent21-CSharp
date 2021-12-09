@@ -19,7 +19,7 @@ public struct GraphPoint : IComparable<GraphPoint>
 
     public static implicit operator GraphPoint(ValueTuple<int, int> tuple)
     {
-        return new(tuple.Item1, tuple.Item2);
+        return new GraphPoint(tuple.Item1, tuple.Item2);
     }
 
     public override string ToString()

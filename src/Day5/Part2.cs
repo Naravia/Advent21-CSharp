@@ -21,7 +21,7 @@ public class Part2
         var intersectingPoints = graph
             .PlottedPoints
             .Count(point => point.count >= 2);
-        
+
         Console.WriteLine($"There are {intersectingPoints} intersecting points.");
     }
 }

@@ -12,7 +12,7 @@ public class Part1
     public void Solve()
     {
         var graph = new Graph();
-        
+
         var lines = _ventMappings.Where(mapping => mapping.IsStraight).ToList();
         foreach (var mapping in lines)
         {
@@ -22,7 +22,7 @@ public class Part1
         var intersectingPoints = graph
             .PlottedPoints
             .Count(point => point.count >= 2);
-        
+
         // Console.WriteLine(graph.PrintGraph());
 
         Console.WriteLine($"There are {intersectingPoints} intersecting points.");

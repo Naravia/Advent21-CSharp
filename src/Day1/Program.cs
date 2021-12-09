@@ -9,17 +9,6 @@ async Task<IList<Depth>> LoadDepths(string input)
         .ToList();
 }
 
-void Day1Part2(IList<Depth> depths)
-{
-    var window = new[]
-    {
-        depths[0],
-        depths[1],
-        depths[2]
-    };
-    var windowIdx = 0;
-}
-
 const string file = "input.txt";
 if (!File.Exists(file))
 {

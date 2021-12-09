@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Day5;
 using NUnit.Framework;
 
@@ -7,11 +5,6 @@ namespace AdventTests.Day5;
 
 public class GraphLineTests
 {
-    private static void AssertPoint(ICollection collection, GraphPoint point, int count)
-    {
-        Assert.Contains((point, count), collection);
-    }
-
     [Test]
     public void CalculatePoints_CanReturn_MultiplePoints()
     {
@@ -53,11 +46,11 @@ public class GraphLineTests
     {
         // Arrange
         var line = new GraphLine((ox, oy), (dx, dy));
-        
+
         // Assert
         Assert.AreEqual(isHorizontal, line.IsHorizontal);
     }
-    
+
     [Theory]
     [TestCase(1, 1, 5, 1, false)]
     [TestCase(1, 1, 5, 2, false)]
@@ -70,11 +63,11 @@ public class GraphLineTests
     {
         // Arrange
         var line = new GraphLine((ox, oy), (dx, dy));
-        
+
         // Assert
         Assert.AreEqual(isVertical, line.IsVertical);
     }
-    
+
     [Theory]
     [TestCase(1, 1, 5, 1, true)]
     [TestCase(1, 1, 5, 2, false)]
@@ -86,7 +79,7 @@ public class GraphLineTests
     {
         // Arrange
         var line = new GraphLine((ox, oy), (dx, dy));
-        
+
         // Assert
         Assert.AreEqual(isStraight, line.IsStraight);
     }
@@ -99,7 +92,7 @@ public class GraphLineTests
 
         // Act
         var line = new GraphLine(input);
-        
+
         // Assert
         Assert.AreEqual(640, line.Origin.X);
         Assert.AreEqual(713, line.Origin.Y);

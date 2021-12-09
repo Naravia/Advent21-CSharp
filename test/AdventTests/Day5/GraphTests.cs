@@ -57,20 +57,20 @@ public class GraphTests
             b: new GraphLine((1, 3), (5, 3))
         );
         var graph = new Graph();
-        
+
         // Act
         graph.PlotLine(lines.a);
         graph.PlotLine(lines.b);
-        
+
         // Assert
         var points = graph.PlottedPoints;
-        
+
         // Verify Line A
         for (var y = 1; y <= 5; ++y)
         {
             AssertPoint(points, (3, y), y == 3 ? 2 : 1);
         }
-        
+
         // Verify Line B
         for (var x = 1; x <= 5; ++x)
         {
@@ -84,10 +84,10 @@ public class GraphTests
         // Arrange
         var line = new GraphLine((0, 0), (0, 0));
         var graph = new Graph();
-        
+
         // Act
         graph.PlotLine(line);
-        
+
         // Assert
         AssertPoint(graph.PlottedPoints, (0, 0), 1);
     }
@@ -98,12 +98,12 @@ public class GraphTests
         // Arrange
         var line = new GraphLine((0, 0), (0, 0));
         var graph = new Graph();
-        
+
         // Act
         graph.PlotLine(line);
         graph.PlotLine(line);
         graph.PlotLine(line);
-        
+
         // Assert
         Assert.AreEqual(1, graph.PlottedPoints.Count);
         AssertPoint(graph.PlottedPoints, (0, 0), 3);
@@ -118,19 +118,19 @@ public class GraphTests
             b: new GraphLine((2, 1), (4, 1))
         );
         var graph = new Graph();
-        
+
         // Act
         graph.PlotLine(lines.a);
         graph.PlotLine(lines.b);
-        
+
         // Assert
         var points = graph.PlottedPoints;
         Assert.AreEqual(5, points.Count);
-        AssertPoint(points, (1,1), 1);
-        AssertPoint(points, (2,1), 2);
-        AssertPoint(points, (3,1), 2);
-        AssertPoint(points, (4,1), 2);
-        AssertPoint(points, (5,1), 1);
+        AssertPoint(points, (1, 1), 1);
+        AssertPoint(points, (2, 1), 2);
+        AssertPoint(points, (3, 1), 2);
+        AssertPoint(points, (4, 1), 2);
+        AssertPoint(points, (5, 1), 1);
     }
 
     [Test]
@@ -139,10 +139,10 @@ public class GraphTests
         // Arrange
         var line = new GraphLine((0, 0), (-5, 0));
         var graph = new Graph();
-        
+
         // Act
         graph.PlotLine(line);
-        
+
         // Assert
         var points = graph.PlottedPoints;
         Assert.AreEqual(6, points.Count);
